@@ -21,16 +21,21 @@
       console.log(err)
     } 
   }
+
+  $: if (message.length > 0) {
+    isSpam = null
+  } 
+
 </script>
 
 <main class="p-4 mx-auto max-w-none sm:max-w-lg text-black">
 	<h1 class="mb-4 text-[#ef6fb5] uppercase text-6xl">Is it spam<br>or ham?</h1>
 	<p class="my-2">The used dataset is a set of SMS tagged messages that have been collected for SMS Spam research. It contains one set of SMS messages in English of 5,574 messages, tagged acording being ham legitimate or spam.  For more details about the source go here <a href="https://archive.ics.uci.edu/ml/index.php">here</a></p>
-  <div class="mt-4 text-center uppercase text-2xl {isSpam ? 'text-red-600' : 'text-[#ef6fb5]'}">
   {#if isSpam !== null}
-    {isSpam ? 'This is spam!' : 'This is not spam'}
+    <div class="mt-4 text-center uppercase text-2xl {isSpam ? 'text-red-600' : 'text-[#ef6fb5]'}">
+      {isSpam ? 'This is spam!' : 'This is not spam'}
+    </div>
   {/if}
-  </div>
   <textarea
     class="p-3 my-2 border-black shadow-[5px_5px_#00000045] rounded-none outline-none transition-shadow
     text-lg w-full resize-none hover:shadow-[7px_7px_#00000045] focus:shadow-[7px_7px_#00000045]"
@@ -57,7 +62,7 @@
         Spam 🤢🤮 or ham 😍?
       {/if}
     </button>
-    <p>SPAM EXAMPLE: Get a FREE burger, send BURGER to 2222 and be a WINNER!</p>
+    <p class="mt-[30px]">SPAM EXAMPLE: Get a FREE burger, send BURGER to 2222 and be a WINNER!</p>
   
   </div>
 </main>
