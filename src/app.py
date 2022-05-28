@@ -2,7 +2,7 @@ from flask import Flask, request, send_from_directory
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import load_model
 import pickle
-
+   
 app = Flask(__name__, static_url_path='', static_folder='../client/public')
 
 @app.route('/api/predict', methods=['POST'])
