@@ -1,1 +1,2 @@
-web: cd client && npm run build && gunicorn wsgi:app
+web: gunicorn wsgi:app
+worker: cd client && npm run build
