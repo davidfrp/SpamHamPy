@@ -2,7 +2,7 @@
   let message: string = ''
   let messageLimit: number = 100
   let isLoading: boolean = false
-  let isSpam: boolean = false
+  let isSpam: boolean = null
 
   async function handleClick () {
     isLoading = true
@@ -25,9 +25,11 @@
 
 <main class="p-4 mx-auto max-w-none sm:max-w-lg text-black">
 	<h1 class="mb-4 text-[#ef6fb5] uppercase text-6xl">Is it spam<br>or ham?</h1>
-	<p class="my-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus praesentium labore ad laudantium est numquam possimus velit aliquam, exercitationem nihil excepturi voluptatum voluptates. Deserunt, fuga? Nobis omnis nostrum quibusdam distinctio!</p>
+	<p class="my-2">The used dataset is a set of SMS tagged messages that have been collected for SMS Spam research. It contains one set of SMS messages in English of 5,574 messages, tagged acording being ham legitimate or spam.  For more details about the source go here <a href="https://archive.ics.uci.edu/ml/index.php">here</a></p>
   <div class="mt-4 text-center uppercase text-2xl {isSpam ? 'text-red-600' : 'text-[#ef6fb5]'}">
-    {isSpam ? 'This is spam!' : 'This is probably not spam?'}
+  {#if isSpam !== null}
+    {isSpam ? 'This is spam!' : 'This is not spam'}
+  {/if}
   </div>
   <textarea
     class="p-3 my-2 border-black shadow-[5px_5px_#00000045] rounded-none outline-none transition-shadow
@@ -55,6 +57,8 @@
         Spam 🤢🤮 or ham 😍?
       {/if}
     </button>
+    <p>SPAM EXAMPLE: Get a FREE burger, send BURGER to 2222 and be a WINNER!</p>
+  
   </div>
 </main>
 
